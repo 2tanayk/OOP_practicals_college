@@ -1,6 +1,6 @@
 package Experiment_7;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
+
 import java.util.Scanner;
 import java.util.Vector;
 
