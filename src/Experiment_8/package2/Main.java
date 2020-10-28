@@ -24,7 +24,7 @@ public class Main {
         teacher.setSubject(subject);
         teacher.setmClass(mClass);
 
-        System.out.println(teacher.getCode() + "\n" + teacher.getName() + "\n" + teacher.getSubject() + "\n" + teacher.getmClass());
+        System.out.println("Code:" + teacher.getCode() + "\n" + "Name:" + teacher.getName() + "\n" + "Subject:" + teacher.getSubject() + "\n" + "Class:" + teacher.getmClass());
 
         System.out.println("Enter officer code,name and grade:");
         code = sc.nextInt();
@@ -35,7 +35,7 @@ public class Main {
 
         Officer officer = new Officer(code, name);
         officer.setGrade(grade);
-        System.out.println(officer.getCode() + "\n" + officer.getName() + "\n" + officer.getGrade());
+        System.out.println("Code:" + officer.getCode() + "\n" + "Name:" + officer.getName() + "\n" + "Grade:" + officer.getGrade());
 
         System.out.println("Enter regular typist code,name,speed and basic pay:");
         code = sc.nextInt();
@@ -49,7 +49,7 @@ public class Main {
         rTypist.setSpeed(speed);
         rTypist.setBasicPay(basicPay);
 
-        System.out.println(rTypist.getCode() + "\n" + rTypist.getName() + "\n" + rTypist.getSpeed() + "\n" + rTypist.getBasicPay());
+        System.out.println("Code:" + rTypist.getCode() + "\n" + "Name:" + rTypist.getName() + "\n" + "Speed:" + rTypist.getSpeed() + "\n" + "Basic Pay:" + rTypist.getBasicPay());
 
 
         System.out.println("Enter ad-hoc typist code,name,speed and basic pay:");
@@ -64,7 +64,7 @@ public class Main {
         aTypist.setSpeed(speed);
         aTypist.setBasicPay(basicPay);
 
-        System.out.println(aTypist.getCode() + "\n" + aTypist.getName() + "\n" + aTypist.getSpeed() + "\n" + aTypist.getBasicPay());
+        System.out.println("Code:" + aTypist.getCode() + "\n" + "Name:" + aTypist.getName() + "\n" + "Speed:" + aTypist.getSpeed() + "\n" + "Basic Pay:" + aTypist.getBasicPay());
 
 
     }
