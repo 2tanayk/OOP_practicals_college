@@ -4,7 +4,7 @@ import java.util.*;
 
 import Experiment_8.package1.*;
 
-public class Main {
+class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int code, speed, basicPay;
