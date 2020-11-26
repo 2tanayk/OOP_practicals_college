@@ -1,7 +1,5 @@
 package Experiment_3.A;
 
-import java.util.*;
-
 import static java.lang.StrictMath.PI;
 
 public class MethodOverloading {
