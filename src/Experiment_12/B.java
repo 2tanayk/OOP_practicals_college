@@ -1,37 +1,41 @@
 package Experiment_12;
 
-class Alphabets implements Runnable {
+import java.util.Scanner;
+
+class Fibonacci implements Runnable {
     private int max;
-    private Printer print;
+    private PrintFibonacci print;
     private boolean isEvenNumber;
 
-    public Alphabets(int max, Printer print, boolean isEvenNumber) {
+    public Fibonacci(int max, PrintFibonacci print, boolean isEvenNumber) {
         this.max = max;
         this.print = print;
         this.isEvenNumber = isEvenNumber;
     }
 
-
     @Override
     public void run() {
         int number = isEvenNumber ? 2 : 1;
-        char c = isEvenNumber ? 'B' : 'A';
         while (number <= max) {
             if (isEvenNumber) {
-                print.printEven(number, c);
+                print.printEven(number);
             } else {
-                print.printOdd(number, c);
+                print.printOdd(number);
             }
             number += 2;
-            c += 2;
         }
     }
 }
 
-class Printer {
+class PrintFibonacci {
     private volatile boolean isOdd;
 
-    synchronized void printEven(int number, char c) {
+    private volatile int a = 0;
+    private volatile int b = 1;
+    private volatile int sum = a + b;
+
+
+    synchronized void printEven(int number) {
         while (!isOdd) {
             try {
                 wait();
@@ -40,12 +44,16 @@ class Printer {
                 System.out.println("Exception!");
             }
         }
-        System.out.println(Thread.currentThread().getName() + ":" + c + " " + number);
+        System.out.println(Thread.currentThread().getName() + ":" + sum);
+        //swapping
+        a = b;
+        b = sum;
+        sum = a + b;
         isOdd = false;
         notify();
     }
 
-    synchronized void printOdd(int number, char c) {
+    synchronized void printOdd(int number) {
         while (isOdd) {
             try {
                 wait();
@@ -54,17 +62,24 @@ class Printer {
                 System.out.println("Exception!");
             }
         }
-        System.out.println(Thread.currentThread().getName() + ":" + c + " " + number);
+        System.out.println(Thread.currentThread().getName() + ":" + sum);
+        //swapping
+        a = b;
+        b = sum;
+        sum = a + b;
         isOdd = true;
         notify();
     }
 }
 
-class A {
+class B {
     public static void main(String[] args) {
-        Printer print = new Printer();
-        Thread t1 = new Thread(new Alphabets(26, print, false), "Odd");
-        Thread t2 = new Thread(new Alphabets(26, print, true), "Even");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println("0 1 ");
+        PrintFibonacci print = new PrintFibonacci();
+        Thread t1 = new Thread(new Fibonacci(n, print, false), "Odd");
+        Thread t2 = new Thread(new Fibonacci(n, print, true), "Even");
         t1.start();
         t2.start();
     }
